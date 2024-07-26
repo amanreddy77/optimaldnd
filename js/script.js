@@ -1,18 +1,6 @@
-// JavaScript for interactive dropdown menu
 document.addEventListener('DOMContentLoaded', function() {
-    const dropdowns = document.querySelectorAll('nav ul li');
-    dropdowns.forEach(dropdown => {
-        dropdown.addEventListener('mouseover', function() {
-            this.querySelector('ul').style.display = 'block';
-        });
-        dropdown.addEventListener('mouseout', function() {
-            this.querySelector('ul').style.display = 'none';
-        });
-    });
-
-    // JavaScript for dark mode toggle
     const toggle = document.getElementById('darkModeToggle');
-    
+
     // Check localStorage for the dark mode preference
     if (localStorage.getItem('darkMode') === 'enabled') {
         document.body.classList.add('dark-mode');
@@ -37,4 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem('darkMode', 'disabled');
         }
     });
+
+    // Remove preload class after dark mode has been applied
+    document.documentElement.classList.remove('preload-dark-mode');
 });
