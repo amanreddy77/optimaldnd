@@ -1,45 +1,59 @@
+/* Base styles */
+
+:root {
+    --background-light: #f0f0f0;
+    --text-light: #333;
+    --background-dark: #181818;
+    --text-dark: #f0f0f0;
+    --header-light: #333;
+    --header-dark: #222;
+    --nav-light: #444;
+    --nav-dark: #333;
+    --footer-light: #333;
+    --footer-dark: #222;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
-    color: #333;
+    background-color: var(--background-light);
+    color: var(--text-light);
     transition: background-color 0.3s, color 0.3s;
 }
-body.dark-mode {
-    background-color: #181818;
-    color: #f0f0f0;
+
+header,
+nav,
+footer {
+    transition: background-color 0.3s;
 }
+
 header {
-    background-color: #333;
+    background-color: var(--header-light);
     color: #fff;
     padding: 20px 0;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s;
 }
-header.dark-mode {
-    background-color: #222;
-}
+
 nav {
     display: flex;
     justify-content: center;
-    background-color: #444;
+    background-color: var(--nav-light);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s;
 }
-nav.dark-mode {
-    background-color: #333;
-}
+
 nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
+
 nav ul li {
     position: relative;
 }
+
 nav ul li a {
     display: block;
     padding: 15px 20px;
@@ -47,47 +61,63 @@ nav ul li a {
     text-decoration: none;
     transition: background-color 0.3s;
 }
+
 nav ul li a:hover {
     background-color: #555;
 }
+
 nav ul li ul {
     display: none;
     position: absolute;
     top: 50px;
     left: 0;
-    background-color: #444;
+    background-color: var(--nav-light);
     padding: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s;
 }
+
 nav ul li ul li a {
     padding: 10px 20px;
     white-space: nowrap;
 }
+
 nav ul li ul li a:hover {
     background-color: #555;
 }
+
 nav ul li:hover ul {
     display: block;
 }
+
 main {
     padding: 40px 20px;
     text-align: center;
-    transition: color 0.3s;
 }
+
 footer {
-    background-color: #333;
+    background-color: var(--footer-light);
     color: white;
     text-align: center;
     padding: 10px 0;
     position: fixed;
     width: 100%;
     bottom: 0;
-    transition: background-color 0.3s;
 }
-footer.dark-mode {
-    background-color: #222;
+
+
+/* Dark mode styles */
+
+[data-applied-mode="dark"] {
+    --background-light: var(--background-dark);
+    --text-light: var(--text-dark);
+    --header-light: var(--header-dark);
+    --nav-light: var(--nav-dark);
+    --footer-light: var(--footer-dark);
 }
+
+
+/* Switch styles */
+
 .switch {
     position: absolute;
     top: 20px;
@@ -95,9 +125,11 @@ footer.dark-mode {
     display: flex;
     align-items: center;
 }
+
 .switch input {
     display: none;
 }
+
 .slider {
     position: relative;
     width: 60px;
@@ -107,6 +139,7 @@ footer.dark-mode {
     cursor: pointer;
     transition: background-color 0.3s;
 }
+
 .slider:before {
     content: "";
     position: absolute;
@@ -118,14 +151,18 @@ footer.dark-mode {
     left: 4px;
     transition: transform 0.3s;
 }
-input:checked + .slider {
+
+input:checked+.slider {
     background-color: #666;
 }
-input:checked + .slider:before {
+
+input:checked+.slider:before {
     transform: translateX(26px);
 }
 
-/* Add some media queries for responsiveness */
+
+/* Media queries */
+
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
@@ -133,47 +170,4 @@ input:checked + .slider:before {
     nav ul li ul {
         position: static;
     }
-}
-/* Add the following styles */
-.login-container {
-    width: 300px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.login-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.login-container form {
-    display: flex;
-    flex-direction: column;
-}
-
-.login-container label {
-    margin-bottom: 5px;
-}
-
-.login-container input {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-.login-container button {
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.login-container button:hover {
-    background-color: #45a049;
 }
